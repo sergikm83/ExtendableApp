@@ -53,7 +53,9 @@ namespace MyExtendableApp
                 return foundSnapIn;
             }
             // Получить все совместимые с IAppFunctionality классы в сборке.
-            var theClassTypes = from t in theSnapInAsm.GetTypes();
+            var theClassTypes = from t in theSnapInAsm.GetTypes()
+                                where t.IsClass && (t.GetInterface("IAppFunctionality") != null)
+                                select t;
             foreach (Type t in theClassTypes)
             {
                 foundSnapIn = true;
@@ -61,6 +63,7 @@ namespace MyExtendableApp
                 IAppFunctionality itfApp = (IAppFunctionality)theSnapInAsm.CreateInstance(t.FullName, true);
                 itfApp?.DoIt();
                 // Отобразить информацию о компании.
+                DisplayCompanyData(t);
             }
             return foundSnapIn;
         }
