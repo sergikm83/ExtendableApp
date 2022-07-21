@@ -10,6 +10,10 @@ EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "VbSnapIn", "VbSnapIn\VbSnapIn.vbproj", "{6C4D5909-2067-4F97-BC4F-8E237136224B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyExtendableApp", "MyExtendableApp\MyExtendableApp.csproj", "{A60B9024-56F4-48D7-AF68-5279CD74CB06}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6C4D5909-2067-4F97-BC4F-8E237136224B} = {6C4D5909-2067-4F97-BC4F-8E237136224B}
+		{B797181E-9E22-4036-B215-2438C8DE4E8F} = {B797181E-9E22-4036-B215-2438C8DE4E8F}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
