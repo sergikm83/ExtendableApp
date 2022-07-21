@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Reflection;
 using System.IO;
+using System.Linq;
 using CommonSnappableTypes;
 
 namespace MyExtendableApp
@@ -19,8 +20,8 @@ namespace MyExtendableApp
                 $"3 -> {Utilities.VbSnapInDLL}\n");
             Console.WriteLine(listOfAssembly);
             Console.Write("enter assembly number: ");
-            string asmChoice= Console.ReadLine();
-            switch(asmChoice)
+            string asmChoice = Console.ReadLine();
+            switch (asmChoice)
             {
                 case "1":
                     ;
@@ -53,7 +54,7 @@ namespace MyExtendableApp
             }
             // Получить все совместимые с IAppFunctionality классы в сборке.
             var theClassTypes = from t in theSnapInAsm.GetTypes();
-            foreach(Type t in theClassTypes)
+            foreach (Type t in theClassTypes)
             {
                 foundSnapIn = true;
                 // Использовать позднее связывание для создания экземпляра типа.
@@ -62,6 +63,18 @@ namespace MyExtendableApp
                 // Отобразить информацию о компании.
             }
             return foundSnapIn;
+        }
+        private static void DisplayCompanyData(Type t)
+        {
+            // Получить данные [CompanyInfo].
+            var compInfo = from ci in t.GetCustomAttributes()
+                           where (ci is CompanyInfoAttribute)
+                           select ci;
+            // Отобразить данные.
+            foreach(CompanyInfoAttribute c in compInfo)
+            {
+                Console.WriteLine($"More info about {c.CompanyName} can be found at {c.CompanyUrl}");
+            }
         }
     }
 }
