@@ -36,5 +36,32 @@ namespace MyExtendableApp
                     break;
             }
         }
+        private static bool LoadExternalModule(string path)
+        {
+            bool foundSnapIn = false;
+            Assembly theSnapInAsm = null;
+            try
+            {
+                // Динамически загрузить выбранную сборку.
+                theSnapInAsm = Assembly.LoadFrom(path);
+            }
+            catch (Exception ex)
+            {
+                // Ошибка при загрузке оснастки.
+                Console.WriteLine($"An error occured loading the snapin: {ex.Message}");
+                return foundSnapIn;
+            }
+            // Получить все совместимые с IAppFunctionality классы в сборке.
+            var theClassTypes = from t in theSnapInAsm.GetTypes();
+            foreach(Type t in theClassTypes)
+            {
+                foundSnapIn = true;
+                // Использовать позднее связывание для создания экземпляра типа.
+                IAppFunctionality itfApp = (IAppFunctionality)theSnapInAsm.CreateInstance(t.FullName, true);
+                itfApp?.DoIt();
+                // Отобразить информацию о компании.
+            }
+            return foundSnapIn;
+        }
     }
 }
