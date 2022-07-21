@@ -1,4 +1,5 @@
-﻿namespace MyExtendableApp
+﻿using System;
+namespace MyExtendableApp
 {
     // вспомогательный класс для упрощения работы
     // с путями и именами файлов.
@@ -19,5 +20,7 @@
         public static readonly string CommonSnappableTypesDLL = "CommonSnappableTypes.dll";
         public static readonly string CSharpSnapInDLL = "CSharpSnapIn.dll";
         public static readonly string VbSnapInDLL = "VbSnapIn.dll";
+        // корневой каталог решения ExtandableApp
+        public static readonly string RootSolutionPath = AppContext.BaseDirectory.Substring(0, AppContext.BaseDirectory.IndexOf(MyExtendableAppDirectory));
     }
 }
