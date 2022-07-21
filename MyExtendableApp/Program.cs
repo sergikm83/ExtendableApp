@@ -21,21 +21,33 @@ namespace MyExtendableApp
             Console.WriteLine(listOfAssembly);
             Console.Write("enter assembly number: ");
             string asmChoice = Console.ReadLine();
+            string path = null;
             switch (asmChoice)
             {
                 case "1":
-                    ;
+                    path = Utilities.RootSolutionPath;
+                    path += Utilities.CommonSnappableTypesDirectory;
+                    path += Utilities.ProjectBinDebugNetDirectory;
+                    path+=Utilities.CommonSnappableTypesDLL;
                     break;
                 case "2":
-                    ;
+                    path = Utilities.RootSolutionPath;
+                    path += Utilities.CSharpSnapInDirectory;
+                    path += Utilities.ProjectBinDebugNetDirectory;
+                    path += Utilities.CSharpSnapInDLL;
                     break;
                 case "3":
-                    ;
+                    path = Utilities.RootSolutionPath;
+                    path += Utilities.VbSnapInDirectory;
+                    path += Utilities.ProjectBinDebugNetDirectory;
+                    path += Utilities.VbSnapInDLL;
                     break;
                 default:
                     Console.WriteLine("Oops. Wrong choice");
                     break;
             }
+            if (path != null)
+                LoadExternalModule(path);
         }
         private static bool LoadExternalModule(string path)
         {
