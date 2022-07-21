@@ -14,7 +14,7 @@ namespace MyExtendableApp
         public static readonly string CommonSnappableTypesDirectory = "CommonSnappableTypes";
         public static readonly string CSharpSnapInDirectory = "CSharpSnapIn";
         public static readonly string VbSnapInDirectory = "VbSnapIn";
-        // вспомогательный отрезок пути для всех проектов при компиляии
+        // вспомогательный отрезок пути для всех проектов при компиляции
         public static readonly string ProjectBinDebugNetDirectory = @"\bin\Debug\net5.0\";
         // имена файлов библиотек классов решения ExtedableApp
         public static readonly string CommonSnappableTypesDLL = "CommonSnappableTypes.dll";
