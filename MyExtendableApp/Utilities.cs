@@ -6,7 +6,9 @@ namespace MyExtendableApp
     // Создан дополнительно и не входит в состав кода,
     // описанного в книге, т.к. в качестве проекта MyExtedableApp
     // была выбрана платформа NET.Core 5.0 вместо предлагаемой
-    // в книге .NET Framework версии 4.x
+    // в книге .NET Framework версии 4.x (подключение пространтва
+    // имен System.Windows.Form)
+    
     public static class Utilities
     {
         // Название папок с проектами решения ExtandableApp
